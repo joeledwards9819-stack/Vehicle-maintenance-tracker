@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Maintenance Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Garage log</p>
+          <h1>Vehicle Maintenance Tracker</h1>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <h2>Log a check</h2>
+          <form id="maintenance-form">
+            <div class="field-row">
+              <label>
+                <span>Date</span>
+                <input type="date" id="date" required />
+              </label>
+              <label>
+                <span>Vehicle Registration</span>
+                <input type="text" id="vehicle" value="My Car" required />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label>
+                <span>Make</span>
+                <input type="text" id="make" placeholder="e.g. Toyota" />
+              </label>
+              <label>
+                <span>Model</span>
+                <input type="text" id="model" placeholder="e.g. Corolla" />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label>
+                <span>MOT date</span>
+                <input type="date" id="motDate" />
+              </label>
+              <label>
+                <span>Mileage</span>
+                <input type="number" id="mileage" min="0" step="1" required />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label>
+                <span>Oil level (%)</span>
+                <input type="number" id="oilLevel" min="0" max="100" step="1" required />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label>
+                <span>Tyres checked</span>
+                <label class="checkbox-row">
+                  <input type="checkbox" id="tyreChecked" />
+                  <span>Yes</span>
+                </label>
+              </label>
+            </div>
+
+            <label>
+              <span>Notes</span>
+              <textarea id="notes" rows="3" placeholder="Example: Top-up oil added, tyre check complete"></textarea>
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" id="submitButton">Add maintenance record</button>
+              <button type="button" id="cancelEdit" class="secondary hidden" hidden>Cancel edit</button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="panel overview-panel">
+          <h2>Overview</h2>
+          <label class="vehicle-select-wrap">
+            <span>Vehicle</span>
+            <input type="search" id="vehicleSelector" placeholder="Search vehicle" list="vehicleSuggestions" />
+            <datalist id="vehicleSuggestions"></datalist>
+          </label>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>Current mileage</span>
+              <strong id="statMileage">0 mi</strong>
+            </div>
+            <div class="stat-card">
+              <span>Oil level</span>
+              <strong id="statOil">0%</strong>
+            </div>
+            <div class="stat-card">
+              <span>Tyre pressure</span>
+              <strong id="statTyre">0 psi</strong>
+            </div>
+            <div class="stat-card">
+              <span>Records</span>
+              <strong id="statCount">0</strong>
+            </div>
+          </div>
+
+          <div class="alerts" id="alerts"></div>
+        </aside>
+      </main>
+
+      <section class="panel history-panel">
+        <div class="section-title-row">
+          <h2>Maintenance history</h2>
+          <button id="clearAll" class="secondary" type="button">Clear all</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
